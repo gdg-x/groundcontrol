@@ -13,6 +13,26 @@ angular.module('vizServerApp', [
         templateUrl: 'partials/main',
         controller: 'MainCtrl'
       })
+      .when('/cast/setup', {
+        templateUrl: 'partials/cast_setup',
+        controller: 'CastSetupCtrl'
+      })
+      .when('/cast/stage', {
+        templateUrl: 'partials/cast_stage',
+        controller: 'CastStageCtrl'
+      })
+      .when('/campaigns', {
+        templateUrl: 'partials/campaign_list',
+        controller: 'CampaignListCtrl'
+      })
+      .when('/visualizations', {
+        templateUrl: 'partials/visualization_list',
+        controller: 'VisualizationListCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'partials/about',
+        controller: 'AboutCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -43,6 +63,40 @@ angular.module('vizServerApp', [
       }, function(error) {
           console.log(error);
       });
+    }
+
+    var initializeCastApi = function() {
+      var sessionRequest = new chrome.cast.SessionRequest("8D68C436");
+      var apiConfig = new chrome.cast.ApiConfig(sessionRequest,
+          function(e) {
+            $rootScope.$broadcast("cast_sdk_session", e);
+          },
+          function(e) {
+            $rootScope.$broadcast("cast_sdk_receiver", e);
+            if( e === chrome.cast.ReceiverAvailability.AVAILABLE) {
+              $rootScope.cast_receiver = true;
+            } else {
+              $rootScope.cast_receiver = false;
+            }
+          });
+      
+      chrome.cast.initialize(apiConfig, function() {
+        console.log("Cast SDK initialized.");
+        $rootScope.cast = true;
+      }, function() {
+
+      });
+    };
+
+    window['__onGCastApiAvailable'] = function(loaded, errorInfo) {
+      if (loaded) {
+        console.log("I got cast baby!");
+        $rootScope.$broadcast("cast_sdk_available", { available: true });
+        initializeCastApi();
+      } else {
+        $rootScope.$broadcast("cast_sdk_available", { available: false, err: errorInfo });
+        console.log(errorInfo);
+      }
     }
 
     $rootScope.$on('$routeChangeSuccess', function(event) {

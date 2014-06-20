@@ -1,3 +1,37 @@
 <div ng-include="'partials/navbar'"></div>
 
+<div class="container">
+	<div ng-switch on="user.auth">
+		<div ng-switch-when="true">
+			<div class="row" ng-show="cast">
+				<div class="span6">
+					<div class="card">
+						<div class="card-wh-body">
+							<div ng-switch on="cast_receiver">
+								<div ng-switch-when="undefined">Loading</div>
+								<div ng-switch-when="true">
+									<b>ChromeCast detected!</b> We have detected one or more ChromeCast devices on your Network. You can use them to connect them as Satellite to Groundcontrol.
+									<br/><br/>
+									<button class="btn btn-primary" ng-click="setupCast()"><img src="images/cast_off.svg" style="height: 32px"> Connect ChromeCast as Satellite</button>
+								</div>
+								<div ng-switch-default>No Cast for you...</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="span6">
+					<div class="card">
+						<div class="card-wh-body">
+							Download the Chrome App
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-switch-default>
+		NLI
+		</div>
+	</div>
+</div>
 
+<div ng-include="'partials/footer'"></div>

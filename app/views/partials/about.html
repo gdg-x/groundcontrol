@@ -1,0 +1,84 @@
+<div ng-include="'partials/navbar'"></div>
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<h2>GDG[x] Groundcontrol</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span12">
+			<h3>Made possible by</h3>
+		</div>
+	</div>
+	<div class="row">
+			<div class="span12">
+				<div class="card">
+					<div class="card-wh-body clearfix">
+						<div class="row">
+							<div class="span2">
+								<img src="images/powered_by_gcp.png">
+							</div>
+							<div class="span2">
+								<img src="images/powered_by_hub.png">
+							</div>
+							<div class="span2">
+								<img src="images/powered_by_chrome.png">
+							</div>
+							<div class="span2">
+								<img src="images/powered_by_gcast.png">
+							</div>
+							<div class="span2">
+								<img src="images/powered_by_os.png">
+							</div>
+							<div class="span2">
+								<img src="images/powered_by_html5.png">
+							</div>
+							<div class="span2">
+								<img src="images/powered_by_angularjs.png">
+							</div>
+							<div class="span2">
+								<img src="images/powered_by_yeoman.png">
+							</div>
+							<div class="span2">
+								<img src="images/powered_by_nodejs.png">
+							</div>
+							<div class="span2">
+								<img src="images/powered_by_mongodb.png">
+							</div>
+							<div class="span2">
+								<img src="images/powered_by_redis.png">
+							</div>
+							<div class="span2">
+								<img src="images/powered_by_socketio.png">
+							</div>
+							<div class="span3" style="padding-top: 25px;">
+								<h3>and you...yes you!</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	<div class="row">
+		<div class="span12">
+			<h3>Made possible by</h3>
+			<small>Contributors to the Groundcontrol Project on GitHub</small>
+		</div>
+	</div>
+	<div class="row">
+			<div ng-repeat="contributor in contributors" class="span3">
+				<div class="card">
+					<div class="card-wh-body clearfix">
+						<div class="pull-left" style="margin-right: 10px"><img ng-src="{{contributor.avatar_url}}" width="48"></div>
+						<div class="pull-left">
+							<a ng-href="https://www.github.com/{{contributor.login}}">{{contributor.login}}</a><br/>
+							Commits: {{contributor.contributions}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-include="'partials/footer'"></div>
+ 
