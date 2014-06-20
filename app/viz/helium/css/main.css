@@ -14,6 +14,12 @@ ul {
     font-size: 0;
 }
 
+canvas {
+    padding: 15px;
+    width: 129px;
+    background-color: #ffffff;"
+}
+
 li {
     display: inline-block;
     margin: 0;

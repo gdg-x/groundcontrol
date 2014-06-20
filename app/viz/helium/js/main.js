@@ -1,5 +1,5 @@
 
-var app = angular.module("GDGNAOrganizers", []);
+var app = angular.module("GDGNAOrganizers", ["monospaced.qrcode"]);
 
 app.controller("PhotoControl", function($scope, $http, $window, $timeout, $location){
 
@@ -20,6 +20,7 @@ app.controller("PhotoControl", function($scope, $http, $window, $timeout, $locat
 
                 fetchPhotos(organizer, {
                     name : response.displayName,
+                    id: organizer.id,
                     picture : response.image.url+"0",
                     occupation : findOccupation(response.organizations),
                     about : response.aboutMe,

@@ -4,6 +4,8 @@
                 <link rel="stylesheet" href="css/main.css" />
                 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
                 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+                <script src="js/vendor/qrcode.js"></script>
+                <script src="js/vendor/qrcode-angular.js"></script>
                 <script src="js/main.js"></script>
                 <script type="text/javascript">
                     (function() {
@@ -38,6 +40,9 @@
                         </div>
                         <div class="location" ng-show="profile.lives">
                             <h4>{{profile.lives}}</h4>
+                        </div>
+                        <div>
+                            <qrcode size="129" data="https://plus.google.com/{{profile.id}}"></qrcode>
                         </div>
                     </div>
 
